@@ -17,16 +17,16 @@ simulate.addEventListener('click', ()=> {
     let liftInputValue=document.querySelector('#liftNumber').value;
     // console.log(floorInputValue);
     // console.log(window.innerWidth);
-     if ( liftInputValue > floorInputValue ){
+     if (floorInputValue <= 0 ||  liftInputValue <= 0){
+       alert("Its impossible  ")
+       deletingFloors();
+       document.querySelector('.secondPage').style.display = 'none';
+
+      
+   }
+     else if ( liftInputValue > floorInputValue ){
         alert("Lift value can't be more than floorvalue")
         deletingFloors();
-       
-    }
-     else if (floorInputValue <= 0 ||  liftInputValue <= 0){
-        alert("Its impossible  ")
-        deletingFloors();
-        document.querySelector('.secondPage').style.display = 'none';
-
        
     }
 
@@ -338,7 +338,7 @@ function moveLift(liftno, floorNo,oldFloorValue) {
         gateopenclose(liftno);
         setTimeout(() =>{
             liftno.setAttribute('flag', 'free')
-        },5500);
+        },2000);
         console.log(liftno.getAttribute('flag'))
     }, 2 * Math.abs(floorNo - oldFloorValue) * 1000)
 
